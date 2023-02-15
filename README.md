@@ -1,9 +1,8 @@
-# ineuron-assignment
-To run:
+# To run:
 npm run build
 
-For testing:
+# For testing:
 npm test
 
-API DOCS URL:
+# API DOCS URL:
 http://localhost:5010/api-docs/
