@@ -25,36 +25,43 @@ routes.get('/',bookController.getListOfAllBooks)
 
 /**
  * @openapi
- * /:
+ * /{id}:
  *   get:
- *     description: To get list of all books from database
+ *     summary: Get details of a book by ID
+ *     description: Retrieves the details of the book with the specified ID from the database.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The ID of the book to retrieve.
  *     responses:
  *       200:
- *         description: Returns a list of books.
+ *         description: Book details retrieved successfully.
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   title:
- *                     type: string
- *                   author:
- *                     type: string
- *                   ISBNCode:
- *                     type: string
- *                   price:
- *                     type: string
- *               example:
- *                 - title: To Kill a Mockingbird
- *                   author: Harper Lee
- *                   ISBNCode: 622523
- *                   price: 212
- *                 - title: War and Peace
- *                   author: Tolstoy
- *                   ISBNCode: 432123
- *                   price: 345
+ *               type: object
+ *               properties:
+ *                 title:
+ *                   type: string
+ *                   description: The title of the book.
+ *                 author:
+ *                   type: string
+ *                   description: The author of the book.
+ *                 ISBNCode:
+ *                   type: string
+ *                   description: The ISBN code of the book.
+ *                 price:
+ *                   type: number
+ *                   description: The price of the book.
+ *       400:
+ *         description: The specified book ID is invalid.
+ *       404:
+ *         description: The specified book ID could not be found.
+ *       500:
+ *         description: A server error occurred while retrieving the book details.
  */
 routes.get('/:id',bookController.getBook)
 
@@ -92,7 +99,7 @@ routes.get('/:id',bookController.getBook)
  */
 routes.post('/', bookController.addBook)
 
-routes.post('/', bookController.addBook)
+
 
 /**
  * @openapi
